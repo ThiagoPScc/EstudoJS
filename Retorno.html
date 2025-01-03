@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // o return termina a função, fazendo com que ela pare de ser executada
+//o return retorna o valor caso seja colocado na linha
+function ex(a,b){
+    return a+b;
+}
+console.log(ex(4,5));
+
+document.addEventListener('click',function(){
+    //ao clicar no body, altera a cor de fundo do site(body)
+    document.body.style.backgroundColor = 'red';
+});
+
+function criaPessoa(nome,sobrenome){
+    return{nome,sobrenome};
+}
+const p1 = criaPessoa("Paulo", "Silva");
+console.log(p1.nome);
+console.log(p1.sobrenome);
+//função dentro da função
+//o return de cada função pode alterar o resultado da variavel, aqui a primeira variavel quando recebe a função pode receber o parametro da outra, já que ele possui dentro de si o valor da mesma
+
+function falarInicio(comeco){
+    function falarFim(fim){
+        return comeco +" "+fim;
+    }
+    return falarFim;
+}
+//colocamos a função dentro da variavel
+
+const olaMundo = falarInicio("Olá");
+
+//printamos isso, vai dar :ƒ falarFim(fim){
+        //return comeco +" "+fim;
+   // }
+//então falta passar o parametro da função falarFim
+console.log(olaMundo);
+//passamos o parametro da função falarFim dentro da variavel olaMundo
+console.log(olaMundo('mundo!'));
+
+
+// funções para diminuir a repetição, o exemplo é com multiplicação
+//isso segue a mesma lógica que a acima
+function criaMultiplicador(multiplicador){
+    return function(n){
+        return multiplicador * n;
+    }
+}
+
+console.log(criaMultiplicador(5));
+const duplica = criaMultiplicador(2);
+console.log(duplica(5));
+
+</script>
+</html>
+
