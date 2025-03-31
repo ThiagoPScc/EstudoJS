@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /*
+class Pessoa {
+    constructor(nome,sobrenome){
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
+
+    falar(){
+        console.log (`${this.nome} esta falando`)
+    }
+}
+const p1 = new Pessoa("Luiz","Silva")
+
+console.log (p1); */
+//getters e setters
+//propriedade privada
+
+const _velocidade = Symbol('velocidade descritor');
+
+class Carro {
+    constructor(nome, valor) {
+        this.nome = nome;
+        this[_velocidade] = 0;
+        this.valor = valor;
+    }
+
+    get velocidade() {
+        return this[_velocidade];
+    }
+
+    set velocidade(valor) {
+        if (typeof valor !== 'number') return; 
+        if (valor < 0 || valor > 100) return;
+        this[_velocidade] = valor;
+    }
+
+    acelerar() {
+        if (this[_velocidade] >= 100) return;
+        this[_velocidade]++;
+    }
+
+    freiar() {
+        if (this[_velocidade] <= 0) return;
+        this[_velocidade]--;
+    }
+}
+
+const c1 = new Carro("fusca", 1000);
+
+for (let i = 0; i <= 200; i++) {
+    c1.acelerar();
+    console.log(c1.velocidade); 
+}
+
+for (let i = 0; i <= 200; i++) {
+    c1.freiar();
+    console.log(c1.velocidade);
+}
+
+c1.velocidade = 150; 
+console.log(c1.velocidade); 
+
+c1.velocidade = 99; 
+console.log(c1.velocidade); 
+
+</script>
